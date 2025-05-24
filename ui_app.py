@@ -1,4 +1,8 @@
 #ui_app.py
+try:
+    import librosa
+except ModuleNotFoundError:
+    st.error("librosa 模块未安装，请检查 requirements.txt")
 import streamlit as st
 import librosa
 import numpy as np
