@@ -3,7 +3,7 @@ import librosa
 import numpy as np
 
 # 设置你的语音文件夹路径（替换为你实际路径）
-DATASET_PATH = r"C:\Users\daiyan\Desktop\Stu\DSP_design\free-spoken-digit-dataset-master\free-spoken-digit-dataset-master\recordings"
+DATASET_PATH = r"\mount\src\dspwork\free-spoken-digit-dataset-master\recordings"
 
 X, y = [], []
 
