@@ -91,7 +91,8 @@ def evaluate_model(model, X_test, y_test):
     cm = confusion_matrix(y_test, y_pred)
     fig, ax = plt.subplots()
     sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=ax)
-    ax.set_xlabel("预测标签")
-    ax.set_ylabel("真实标签")
+     ax.set_title("SVM model confusion matrix")
+    ax.set_xlabel("Tag Estimation")
+    ax.set_ylabel("True label")
 
     st.pyplot(fig)
