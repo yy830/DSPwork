@@ -27,11 +27,19 @@ if uploaded_file is not None:
     # 1. 加载音频
     y, sr = load_audio(uploaded_file)
     st.write("采样率:", sr)
-    #2. 波形图
+    mfcc = extract_mfcc(y, sr)
+    # 2. 音频识别
+    try:
+        prediction = predict_digit(model, mfcc)
+        st.subheader("🌟 识别结果")
+        st.write(f"模型预测的数字是：**{prediction}**")
+    except Exception as e:
+        st.error(f"模型预测失败：{e}")
+    #3. 波形图
     st.subheader("⏱️ 原始波形（时域）")
     plot_waveform(y, sr)
 
-    mfcc = extract_mfcc(y, sr)
+
     st.markdown("### 🧠 MFCC 特征图（感知域）")
     plot_mfcc(y, sr)
 
@@ -41,12 +49,7 @@ if uploaded_file is not None:
 
     plot_fft_3d_interactive(y, sr, N=512)
 
-    try:
-        prediction = predict_digit(model, mfcc)
-        st.subheader("🌟 识别结果")
-        st.write(f"模型预测的数字是：**{prediction}**")
-    except Exception as e:
-        st.error(f"模型预测失败：{e}")
+
 
     # 从数据文件重新划分一次测试集
     data = np.load("digit_mfcc_dataset.npz")
