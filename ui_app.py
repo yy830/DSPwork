@@ -31,7 +31,7 @@ if uploaded_file is not None:
     # 2. 音频识别
     try:
         prediction = predict_digit(model, mfcc)
-        st.subheader("🌟 识别结果")
+        st.subheader("🌟 识别结果（传统模型）")
         st.write(f"模型预测的数字是：**{prediction}**")
     except Exception as e:
         st.error(f"模型预测失败：{e}")
